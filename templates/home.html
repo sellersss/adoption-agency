@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} All Pets {% endblock %}
+{% block header %} All Pets {% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-left">
+    {% for pet in pets %}
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card rounded bg-dark mb-4">
+            <img class="card-img-top w-100 mx-auto my-auto rounded shadow" src="{{ pet.photo_url }}"
+                alt="{{ pet.name }}" style="object-fit: cover !important;">
+            <div class="card-body">
+                <h4 class="card-title mt-2">
+                    <a href="/{{ pet.id }}">{{ pet.name }}</a>
+                    <h6 class="card-subtitle">
+                        {% if pet.available %}
+                        <span class="text-success">Available</span>
+                        {% else %}
+                        <span class="text-warning">Not Available</span>
+                        {% endif %}
+                    </h6>
+                </h4>
+                <a href="/{{ pet.id }}" class="btn btn-success mt-3">Edit</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row justify-content-center mt-3 mb-5 text-center">
+    <div class="col-12">
+        <a href="/add" class="btn btn-lg btn-primary">Add pet</a>
+    </div>
+</div>
+
+{% endblock %}

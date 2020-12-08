@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} {{ pet.name.title()}} {% endblock %}
+{% block header %} {{ pet.name }} Info {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="{{ pet.photo_url }}" alt="" class="img rounded-circle border shadow d-block mx-auto">
+        <div class="col-lg-8 col-md-8 col-sm-2 mx-auto border mx-5 my-3 rounded">
+            <p class="lead text-info text-center mt-2 mb-n1">{{ pet.species.capitalize() }}</p>
+            {% if pet.age %}
+            <p class="lead text-info text-center">{{ pet.age }} years old</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-8 d-block mx-auto my-auto">
+        {% include 'form-pet.html' %}
+    </div>
+</div>
+<div class="row justify-content-center">
+
+</div>
+{% endblock %}
+</body>
+
+</html>
